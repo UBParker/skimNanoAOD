@@ -15,6 +15,13 @@ scram build
 
 git clone git@github.com/UBParker/skimNanoAOD.git PhysicsTools/NanoAODTools/skimNanoAOD
 
+cd PhysicsTools/NanoAODTools
+(once)
+bash standalone/env_standalone.sh  build
+(every time)
+source standalone/env_standalone.sh
+
+
 ```
 
 
@@ -25,14 +32,14 @@ git clone git@github.com/UBParker/skimNanoAOD.git PhysicsTools/NanoAODTools/skim
 The selections are given in selectionModule.py. Additional cuts and input file is defined in process_nanoAOD.py
 ```
 ### Producing samples locally
+cd skimNanoAOD
+python process_nanoAOD.py fileToTest.root DirectorytoStore treeName 
+```
 
 ```
-python process_nanoAOD.py
-```
+### Running with CRAB3
+### Change input sample and SE in crab_cfg.py. Selections and module in crab_script.py
 
-### running with crab
-Change input sample and SE in crab_cfg.py. Selections and module in crab_script.py
-```
 cd crab/
 voms-proxy-init -voms cms --valid 200:00
 source /cvmfs/cms.cern.ch/crab3/crab.sh
