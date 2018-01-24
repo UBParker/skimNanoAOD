@@ -4,7 +4,7 @@ import ROOT
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 from importlib import import_module
 from PhysicsTools.NanoAODTools.postprocessing.framework.postprocessor import PostProcessor
-from  selectionModule import *
+from TTbar_SemiLep  import *
 
 if len(sys.argv)>1:
 	 infile = sys.argv[1]
@@ -18,5 +18,5 @@ if len(sys.argv)>3:
 	 name = sys.argv[3]
 else:
 	name = "tree"
-p=PostProcessor(outputDir,[infile],"nFatJet>0&&FatJet_msoftdrop>30&&FatJet_msoftdrop<140&&FatJet_eta<2.5&&FatJet_pt>200&&MET_sumEt>40","keep_and_drop.txt",[selectionModule()],postfix=name,provenance=True,haddFileName=name+".root",jsonInput="Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON.txt")
+p=PostProcessor(outputDir,[infile],"nFatJet>0&&FatJet_msoftdrop>30&&FatJet_eta<2.5&&FatJet_pt>200&&MET_sumEt>40&&( (nElectron > 0 && HLT_Ele115_CaloIdVT_GsfTrkIdT) || (nMuon > 0 && HLT_Mu50))","keep_and_drop.txt",[TTbar_SemiLep()],postfix=name,provenance=True,haddFileName=name+".root",jsonInput="Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON.txt",histFileName= 'TTbar_SemiLep_hists.root', histDirName='ttbar_semilep'  )
 p.run()
