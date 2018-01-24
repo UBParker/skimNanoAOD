@@ -7,8 +7,14 @@ cd CMSSW_9_4_1/src
 cmsenv
 git cms-merge-topic cms-nanoAOD:master
 git checkout -b nanoAOD cms-nanoAOD/master
+(Eventually after our additions are merged) 
 git clone https://github.com/cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools
+(For now)
+git clone https://github.com/UBParker/nanoAOD-tools.git PhysicsTools/NanoAODTools
 scram build
+
+git clone git@github.com/UBParker/skimNanoAOD.git PhysicsTools/NanoAODTools/skimNanoAOD
+
 ```
 
 
